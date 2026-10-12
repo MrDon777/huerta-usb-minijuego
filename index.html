@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minijuego Huerta - USB</title>
+    <style>
+        :root {
+            --primary: #2e7d32;
+            --primary-dark: #1b5e20;
+            --accent: #81c784;
+            --bg: #f1f8e9;
+            --text: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+        h1 { 
+            color: var(--primary); 
+            font-size: 1.5rem; 
+            margin-bottom: 0.5rem; 
+        }
+        .subtitle {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1.2rem;
+        }
+        .plant-badge {
+            background: var(--bg);
+            color: var(--primary-dark);
+            padding: 0.6rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--accent);
+        }
+        .question-box {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            text-align: left;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .btn-option {
+            background: #fff;
+            border: 2px solid var(--accent);
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+        .btn-option:hover:not(:disabled) {
+            background: var(--bg);
+            border-color: var(--primary);
+        }
+        .btn-option.correct {
+            background: #4caf50 !important;
+            color: white;
+            border-color: #4caf50;
+        }
+        .btn-option.incorrect {
+            background: #f44336 !important;
+            color: white;
+            border-color: #f44336;
+        }
+        #result-screen {
+            display: none;
+        }
+        .btn-restart {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1.5rem;
+            transition: background 0.2s;
+        }
+        .btn-restart:hover {
+            background: var(--primary-dark);
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="game-container">
+        <h1>🌱 Reto Verde - Huerta USB</h1>
+        <p class="subtitle">Demuestra tus conocimientos para cuidar la planta asignada</p>
+        <div class="plant-badge" id="plant-assigned">Cargando planta asignada...</div>
+        
+        <div id="quiz-screen">
+            <div class="question-box" id="question-text">Cargando pregunta...</div>
+            <div class="options" id="options-container"></div>
+        </div>
+
+        <div id="result-screen">
+            <h2 id="result-title">¡Resultado!</h2>
+            <p id="result-message"></p>
+            <button class="btn-restart" id="restart-btn" onclick="iniciarJuego()">Jugar otra vez</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
